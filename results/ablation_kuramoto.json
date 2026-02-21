@@ -1,0 +1,340 @@
+{
+  "experiment": "Kuramoto Ablation on CWRU",
+  "n_conditions": 36,
+  "summary": {
+    "mean_auc_on": 0.9514537097088935,
+    "mean_auc_off": 0.9514537097088935,
+    "mean_delta": 0.0,
+    "n_on_better": 0,
+    "n_off_better": 0,
+    "n_equal": 36
+  },
+  "conditions": [
+    {
+      "condition": "Ball 007\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_kuramoto_on": 0.9947301892502982,
+      "auc_kuramoto_off": 0.9947301892502982,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 014\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_kuramoto_on": 0.9985636053505701,
+      "auc_kuramoto_off": 0.9985636053505701,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 021\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_kuramoto_on": 0.9980690838875778,
+      "auc_kuramoto_off": 0.9980690838875778,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 007\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 014\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 021\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 007\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 014\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_kuramoto_on": 0.9980967770895054,
+      "auc_kuramoto_off": 0.9980967770895054,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 021\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 007\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_kuramoto_on": 0.7633835196538045,
+      "auc_kuramoto_off": 0.7633835196538045,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 014\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_kuramoto_on": 0.9572949583453031,
+      "auc_kuramoto_off": 0.9572949583453031,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 021\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_kuramoto_on": 0.5882347637937252,
+      "auc_kuramoto_off": 0.5882347637937252,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 007\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 014\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_kuramoto_on": 0.8215155066714749,
+      "auc_kuramoto_off": 0.8215155066714749,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 021\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 007\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_kuramoto_on": 0.9987306014446112,
+      "auc_kuramoto_off": 0.9987306014446112,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 014\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_kuramoto_on": 0.27659526716460786,
+      "auc_kuramoto_off": 0.27659526716460786,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 021\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 007\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_kuramoto_on": 0.9720390445773919,
+      "auc_kuramoto_off": 0.9720390445773919,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 014\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_kuramoto_on": 0.9993818755151038,
+      "auc_kuramoto_off": 0.9993818755151038,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 021\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_kuramoto_on": 0.9953237538968718,
+      "auc_kuramoto_off": 0.9953237538968718,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 007\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 014\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_kuramoto_on": 0.9957716701902748,
+      "auc_kuramoto_off": 0.9957716701902748,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 021\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 007\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_kuramoto_on": 0.9999640142143853,
+      "auc_kuramoto_off": 0.9999640142143853,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 014\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_kuramoto_on": 0.905190949574918,
+      "auc_kuramoto_off": 0.905190949574918,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 021\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 007\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_kuramoto_on": 0.9980927533624219,
+      "auc_kuramoto_off": 0.9980927533624219,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 014\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Ball 021\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_kuramoto_on": 0.9999552083706598,
+      "auc_kuramoto_off": 0.9999552083706598,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 007\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 014\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Inner 021\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 007\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 014\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_kuramoto_on": 0.9914000071666607,
+      "auc_kuramoto_off": 0.9914000071666607,
+      "delta": 0.0
+    },
+    {
+      "condition": "Outer 021\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_kuramoto_on": 1.0,
+      "auc_kuramoto_off": 1.0,
+      "delta": 0.0
+    }
+  ],
+  "elapsed_seconds": 237.39689207077026,
+  "timestamp": "2026-02-20 18:27:24"
+}

@@ -1,0 +1,55 @@
+{
+  "experiment": "Paderborn Bearing Dataset Benchmark",
+  "dataset": "Paderborn University KAt DataCenter",
+  "sampling_rate": 64000,
+  "window_size": 4096,
+  "n_healthy_bearings": 2,
+  "n_healthy_windows": 1249,
+  "n_tested_bearings": 6,
+  "summary": {
+    "mean_auc": 0.503248406524811,
+    "std_auc": 0.17434341001579948,
+    "min_auc": 0.2756166666666666,
+    "max_auc": 0.8522397435897435
+  },
+  "bearings": [
+    {
+      "bearing": "KA01",
+      "damage_type": "Outer Race (KA)",
+      "auc": 0.4922414125200642,
+      "n_fault_windows": 623
+    },
+    {
+      "bearing": "KA03",
+      "damage_type": "Outer Race (KA)",
+      "auc": 0.5170979133226324,
+      "n_fault_windows": 623
+    },
+    {
+      "bearing": "KA05",
+      "damage_type": "Outer Race (KA)",
+      "auc": 0.46033772070626006,
+      "n_fault_windows": 623
+    },
+    {
+      "bearing": "KI01",
+      "damage_type": "Inner Race (KI)",
+      "auc": 0.8522397435897435,
+      "n_fault_windows": 624
+    },
+    {
+      "bearing": "KI03",
+      "damage_type": "Inner Race (KI)",
+      "auc": 0.4219569823434992,
+      "n_fault_windows": 623
+    },
+    {
+      "bearing": "KI05",
+      "damage_type": "Inner Race (KI)",
+      "auc": 0.2756166666666666,
+      "n_fault_windows": 624
+    }
+  ],
+  "elapsed_seconds": 39.92847418785095,
+  "timestamp": "2026-02-20 23:12:12"
+}

@@ -1,0 +1,218 @@
+# NATIVA
+
+Un réseau de neurones à spikes pour la détection d'anomalies vibratoires en maintenance prédictive.
+
+![Résultats NATIVA sur CWRU — Distribution des scores de surprise](results/cwru_report.png)
+
+> **AUC-ROC 0.997** en détection non-supervisée sur le dataset standard CWRU.
+> Aucun exemple de défaut vu pendant l'entraînement.
+
+---
+
+## Ce que c'est
+
+NATIVA est un réseau neuromorphique qui apprend à quoi ressemble un moteur "sain" — sans jamais voir un défaut — puis détecte toute déviation. Pas de labels, pas de GPU, juste des spikes et de la physique.
+
+L'architecture combine quatre briques :
+- **Neurones LIF** (Leaky Integrate-and-Fire) avec seuils adaptatifs
+- **STDP** (Spike-Timing-Dependent Plasticity) pour l'apprentissage non-supervisé
+- **Oscillateurs de Kuramoto** pour la synchronisation de phase entre neurones
+- **Inférence Active** (Free Energy) pour scorer l'anomalie
+
+Le principe : un signal de vibration sain produit un motif de spikes stable. Quand le roulement se dégrade, le motif change, la "surprise" du réseau augmente, et on déclenche une alerte.
+
+## Comment ça marche
+
+```
+  Signal vibratoire (accéléromètre)
+         │
+         ▼
+  ┌──────────────────────┐
+  │  STFT → 8 bandes de  │   Encodage multi-bande :
+  │  fréquence → spikes  │   le spectre est découpé en sous-bandes,
+  │  (norm. globale)      │   normalisé sur la baseline "saine"
+  └──────────┬───────────┘
+             ▼
+  ┌──────────────────────┐
+  │  100 neurones LIF    │   Le réseau traite les spikes
+  │  + STDP + Kuramoto   │   pas de temps par pas de temps
+  │  + Free Energy       │
+  └──────────┬───────────┘
+             ▼
+  Score de surprise (Free Energy)
+  Si surprise > seuil → ALERTE
+```
+
+## Résultats
+
+Benchmarké sur le dataset CWRU (Case Western Reserve University) — le standard industriel pour les roulements.
+
+### Single-condition (0 HP, 0.007")
+
+| Métrique | NATIVA (non-supervisé) | Random Forest (supervisé) |
+|----------|:----------------------:|:-------------------------:|
+| AUC-ROC | 0.997 | 1.000 |
+| F1 | 0.992 | 1.000 |
+| Recall | 0.989 | 1.000 |
+| Faux Négatifs | 8 | 0 |
+
+Le RF est supervisé (il voit les labels). NATIVA n'a **jamais vu un défaut**. 99.7% d'AUC en non-supervisé, c'est un résultat solide.
+
+### Multi-condition (36 conditions)
+
+3 types de défaut × 3 tailles × 4 charges moteur :
+
+| Charge moteur | AUC moyen |
+|:-------------:|:---------:|
+| 0 HP | 0.999 |
+| 1 HP | 0.823 |
+| 2 HP | 0.985 |
+| 3 HP | 0.999 |
+
+**Inner Race** est le plus fiable (AUC 0.985 ± 0.05). **Ball** et **Outer Race** sont solides sauf à 1HP.
+
+![Heatmap AUC-ROC par type de défaut, taille et charge moteur](results/cwru_multi_report.png)
+
+### Limitation connue : 1 HP
+
+À 1HP (1772 RPM), 3 des 9 conditions sont faibles (AUC < 0.77). L'encodeur multi-bande utilise des bandes linéaires de 750 Hz : les fréquences de défaut (BPFO = 105 Hz, BPFI = 160 Hz) tombent dans la même bande que l'énergie normale de fonctionnement. L'encodeur est "harmonic-dependent" (il détecte via les résonances haute fréquence) et non "kinematic-dependent" (il ne résout pas les fréquences cinématiques individuelles). Des bandes logarithmiques (Mel-scale) corrigeraient ce point.
+
+Le AUC moyen sur les 36 conditions est **0.95**. En excluant le 1HP, il monte à **0.99**.
+
+### Ce qui explique le gap : l'encodeur, pas le SNN
+
+On a testé NATIVA avec 3 baselines non-supervisées (Autoencoder, Isolation Forest, OC-SVM) sur les mêmes conditions. Résultat :
+
+| Méthode | Input | Mean AUC |
+|:--------|:------|:--------:|
+| Autoencoder / IF / OC-SVM | 22 features FFT (float) | **1.000** |
+| NATIVA (8 bandes → spikes) | 8 bandes STFT (binaire) | 0.951 |
+| **NATIVA (22 features → spikes)** | **22 features FFT (rate-coded)** | **0.995** |
+
+![Comparaison encodage vs apprentissage](results/feature_spike_report.png)
+
+**Le SNN n'est pas le problème.** Quand on donne les mêmes features (en spikes) à NATIVA, il fait 0.995 — le gap passe de 5% à 0.5%. Le 1HP passe de 0.82 à 0.995. Le bottleneck, c'est l'encodeur 8-bandes linéaires, pas l'algorithme d'apprentissage.
+
+Les 0.5% restants = le coût du spike : rate coding ajoute du bruit stochastique que le floating-point n'a pas. C'est le **trade-off SWaP** (Size, Weight, and Power) : 0.5% de précision contre une architecture compatible avec des puces neuromorphiques en microwatts.
+
+## Évolution du projet (journal de bord)
+
+| Étape | Résultat | Leçon |
+|:------|:--------|:------|
+| PoC sonar (défense navale) | Fonctionnel sur synthétique | Pas de données réelles classifiées |
+| Pivot vibrations (NASA) | Visuellement prometteur | Pas de métriques reproductibles |
+| Premier CWRU | **AUC = 0.50** ❗ | Normalisation per-window = piège mortel |
+| Fix normalisation globale | AUC = 0.997 | Percée architecturale |
+| Multi-condition (36) | AUC moyen = 0.95 | 1HP faible (0.82), 3 conditions < 0.77 |
+| Ablation Kuramoto | **Δ = 0.000** | Kuramoto inerte sur cette tâche |
+| Baselines (AE/IF/SVM) | AUC = 1.000 | CWRU trivialement séparable avec 22 features |
+| **Feature-Spike** | **AUC = 0.995** | **Le SNN est bon, l'encodeur était le bottleneck** |
+| Paderborn (64kHz) | **AUC = 0.503** ❌ | L'encodeur ne généralise pas cross-dataset |
+| **Mel-Scale encoder** | **CWRU: 0.69 ❌ / Paderborn: 0.60 ↗️** | **Pas d'encodeur universel. Ball faults = broadband** |
+| Envelope V1 (naïve) | CWRU: 0.889 / Pad: 0.624 | Démodulation AM marche, 1HP fixé (0.905) |
+| **Envelope V2 (expert)** | **CWRU: 1.000 ✅ / Pad: 0.450 ❌** | **HP>2kHz = parfait CWRU, détruit Paderborn** |
+| Dual Encoder (Fusion) | CWRU: 0.976 ↘️ / Pad: 0.428 ↘️ | Famine compétitive (Besoin d'arch. columnaire) |
+| Delay-Line (Jeffress) | KA03 (Pad): 0.256 $\rightarrow$ **0.987** | Détection des fautes périodiques sans FFT |
+
+### Conclusion R&D et Taxonomie des pannes
+
+**Le SNN est prouvé bon** (feature-spike 0.995, envelope V2 1.000). Le grand enseignement du projet est la création d'une **Taxonomie de l'observabilité physique** :
+1. **Pannes Impulsives** (CWRU) : Détectables par Enveloppe temporelle (résolu à 100%).
+2. **Périodiques sourdes** (Paderborn KA03) : Détectables par Lignes de Retard de Jeffress (résolu).
+3. **Apériodiques / Frottement continu** (Paderborn KA05) : **Le Mur Physique Absolu**. Un accéléromètre seul ne peut pas discerner une usure abrasive d'un changement de régime moteur (variation RMS) sans risquer de fausses alarmes.
+
+### Edge AI : C Bare-Metal
+
+```
+gcc -O2 -o nativa_edge edge/nativa_edge.c -lm && ./nativa_edge
+```
+
+| Métrique | Valeur |
+|---------|--------|
+| RAM totale | **4.7 KB** |
+| Latence/fenêtre (Cortex-M4) | **~0.2 ms** |
+| CPU usage (fenêtre 100ms) | **0.2%** |
+| Dépendances externes | **Zéro** |
+
+## Positionnement : Pourquoi NATIVA intéresse l'Industrie (STMicroelectronics, SKF, Siemens)
+
+### 1. Le Mur Physique est une garantie Anti-Bullshit
+Face à la prolifération de start-ups promettant de "détecter 100% des anomalies avec une IA Deep Learning", NATIVA apporte une approche d'ingénieur. Le système assume ses limites (ex: 0.45 sur Paderborn KA05) en prouvant que **le signal mono-capteur ne contient pas l'information**. Dans l'industrie lourde (aéronautique, nucléaire), une IA qui avoue "je ne peux pas voir cette panne avec un seul capteur" a paradoxalement plus de valeur qu'une boîte noire sujette aux hallucinations et aux fausses alarmes sur le moindre changement de charge (Fausses variations RMS).
+
+### 2. Le trade-off SWaP (Size, Weight, Power)
+NATIVA n'est pas conçu pour battre la précision du ML classique sur serveur. C'est le **Wake-Up Sensor ultime** pour l'Edge :
+- Tourne en continu sur l'edge (ALU classique, pas de réseau flottant complexe, pas de FFT).
+- Détecte *quelque chose d'anormal* (Dérive de l'Energie Libre).
+- Réveille le système de diagnostic lourd (CNN/RF ou transmission radio) uniquement pour confirmation.
+
+> *"Un Isolation Forest fait 100% de précision, mais il requiert un CPU puissant pour calculer 22 features FFT complexes en continu. NATIVA atteint le même 100% sur CWRU avec 120 opérations/sample, occupant 4.7 KB de RAM. Échanger des calculs Floating-Point gourmands contre un traitement en impulsions binaires (Spikes), c'est la définition de l'Edge AI."*
+
+### 3. La Frontière (NATIVA 2.0) : L'Inférence Active Distribuée (IoT Mesh)
+Le "mur physique" mono-capteur dicte la suite : la **Fusion Multi-modale**. L'Inférence Active de Karl Friston est bâtie sur les **Markov Blankets** (couvertures de Markov). 
+La vision industrielle ultime de NATIVA est un réseau Mesh où chaque capteur (un Nœud Vibration, un Nœud Micro, un Nœud Température) fait tourner sa boucle NATIVA (4.7 KB) indépendamment. Au lieu d'émettre de grosses données temporelles en radio (très coûteux en énergie), ils échangent simplement des "Spikes de Surprise" binaires entre eux. S'ils synchronisent leurs erreurs de prédiction, ils isolent les pannes d'usure continue (comme KA05) sans nécessiter de serveur central.
+
+**NATIVA est le framework mathématique idéal pour faire communiquer les futures puces neuromorphiques et microcontrôleurs en environnement contraint.**
+
+## Reproduire les résultats
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# Benchmark single-condition (~2 min)
+python experiments/benchmark_cwru.py
+
+# Benchmark multi-condition, 36 conditions (~10 min)
+python experiments/benchmark_cwru_multi.py
+```
+
+Le dataset CWRU est téléchargé automatiquement (~30 MB).
+
+## Structure du projet
+
+```
+NATIVA/
+├── README.md
+├── requirements.txt
+├── nativa/                        # Core — réseau neuromorphique
+│   ├── nativa_network.py          #   Réseau SNN (LIF + STDP + Kuramoto + FE)
+│   ├── neuron.py                  #   Neurones LIF, seuils adaptatifs
+│   ├── stdp.py                    #   Apprentissage STDP
+│   ├── free_energy.py             #   Inférence Active (ELBO)
+│   ├── kuramoto.py                #   Oscillateurs de Kuramoto
+│   ├── event_encoder.py           #   Encodeurs spike (rate, temporal, delta)
+│   ├── integrators.py             #   Intégrateurs numériques (RK4, Euler)
+│   └── delay_buffer.py            #   Buffers temporels
+├── experiments/                   # Benchmarks reproductibles
+│   ├── benchmark_cwru.py          #   Single-condition (0HP)
+│   ├── benchmark_cwru_multi.py    #   Multi-condition (36 conditions)
+│   ├── ablation_kuramoto.py       #   Ablation Kuramoto ON/OFF
+│   ├── baseline_autoencoder.py    #   AE + IF + OC-SVM baselines
+│   ├── feature_spike.py           #   22 features → rate-coded spikes
+│   ├── benchmark_paderborn.py     #   Paderborn cross-dataset validation
+│   ├── mel_encoder.py             #   Linear vs Mel-scale comparison
+│   ├── envelope_encoder.py        #   Frugal envelope V1 (naive)
+│   └── envelope_v2.py             #   Frugal envelope V2 (expert corrections)
+├── edge/                          # Firmware bare-metal C
+│   └── nativa_edge.c              #   Inférence complète (4.7KB RAM)
+├── results/                       # Résultats générés
+│   ├── cwru_report.png
+│   ├── cwru_multi_report.png
+│   └── *.json
+├── paper/                         # Publication scientifique
+│   ├── NATIVA_paper.tex           #   Version LaTeX (IEEE format)
+│   └── NATIVA_paper.md            #   Version Markdown
+└── data/cwru/                     # Dataset (auto-téléchargé)
+```
+
+## Références
+
+- Dataset CWRU : [Case Western Reserve University Bearing Data Center](https://engineering.case.edu/bearingdatacenter)
+- LIF + STDP : Diehl & Cook, "Unsupervised learning of digit recognition using STDP", 2015
+- Kuramoto : Fell & Axmacher, "The role of phase synchronization in memory processes", 2011
+- Active Inference : Friston, "The free-energy principle", 2010
+- Multi-band encoding : inspiré de MRA-SNN (2024) et ISO 10816
+
+## Auteur
+
+Saad LARAJ

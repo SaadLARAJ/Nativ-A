@@ -1,0 +1,272 @@
+{
+  "experiment": "Feature-Spike: 22 FFT features rate-coded into NATIVA",
+  "hypothesis": "If AUC \u2248 1.0, the SNN learning is good and the 8-band encoder was the bottleneck",
+  "n_conditions": 36,
+  "summary": {
+    "mean_auc": 0.9948252083843339,
+    "std_auc": 0.006328536775570777,
+    "min_auc": 0.9677657325356483,
+    "max_auc": 0.9998294311979317
+  },
+  "comparison": {
+    "nativa_8band": 0.951,
+    "ae_22features": 1.0,
+    "nativa_22features_spike": 0.9948252083843339
+  },
+  "conditions": [
+    {
+      "condition": "Ball 007\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_feature_spike": 0.9920418736313625
+    },
+    {
+      "condition": "Ball 014\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_feature_spike": 0.99856360535057
+    },
+    {
+      "condition": "Ball 021\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_feature_spike": 0.997425445183437
+    },
+    {
+      "condition": "Inner 007\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_feature_spike": 0.9997655883731833
+    },
+    {
+      "condition": "Inner 014\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_feature_spike": 0.9985815602836879
+    },
+    {
+      "condition": "Inner 021\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_feature_spike": 0.9974969605950081
+    },
+    {
+      "condition": "Outer 007\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_feature_spike": 0.9924730029321318
+    },
+    {
+      "condition": "Outer 014\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_feature_spike": 0.998007002423916
+    },
+    {
+      "condition": "Outer 021\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_feature_spike": 0.9987003507272695
+    },
+    {
+      "condition": "Ball 007\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9870447169130906
+    },
+    {
+      "condition": "Ball 014\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9942994110887676
+    },
+    {
+      "condition": "Ball 021\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9940497655968266
+    },
+    {
+      "condition": "Inner 007\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9998294311979317
+    },
+    {
+      "condition": "Inner 014\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9995402091597548
+    },
+    {
+      "condition": "Inner 021\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_feature_spike": 0.996033177064551
+    },
+    {
+      "condition": "Outer 007\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9967907459057427
+    },
+    {
+      "condition": "Outer 014\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9920730393565068
+    },
+    {
+      "condition": "Outer 021\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_feature_spike": 0.9993446567078426
+    },
+    {
+      "condition": "Ball 007\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9772929692771355
+    },
+    {
+      "condition": "Ball 014\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9964435446303795
+    },
+    {
+      "condition": "Ball 021\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9916777152685705
+    },
+    {
+      "condition": "Inner 007\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9978589601175333
+    },
+    {
+      "condition": "Inner 014\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9978408528631191
+    },
+    {
+      "condition": "Inner 021\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9911025145067698
+    },
+    {
+      "condition": "Outer 007\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9974630021141649
+    },
+    {
+      "condition": "Outer 014\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_feature_spike": 0.9925149565921461
+    },
+    {
+      "condition": "Outer 021\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_feature_spike": 0.997679793600172
+    },
+    {
+      "condition": "Ball 007\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9677657325356483
+    },
+    {
+      "condition": "Ball 014\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9981277098935751
+    },
+    {
+      "condition": "Ball 021\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9910506324578063
+    },
+    {
+      "condition": "Inner 007\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9996180290297937
+    },
+    {
+      "condition": "Inner 014\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9996221492510458
+    },
+    {
+      "condition": "Inner 021\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9959687533593722
+    },
+    {
+      "condition": "Outer 007\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9952185975147412
+    },
+    {
+      "condition": "Outer 014\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_feature_spike": 0.9954133371555524
+    },
+    {
+      "condition": "Outer 021\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_feature_spike": 0.998987709176909
+    }
+  ],
+  "elapsed_seconds": 141.17992281913757,
+  "timestamp": "2026-02-20 22:45:55"
+}

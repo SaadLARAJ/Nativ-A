@@ -1,0 +1,348 @@
+{
+  "experiment": "Frugal Envelope V2 (Expert Corrections)",
+  "fixes": [
+    "Window = 100ms (time-based)",
+    "High-pass > 2kHz (remove rotor noise)",
+    "tau_m = 150ms (slow fault memory)",
+    "Calibrated delta (healthy P50)"
+  ],
+  "cwru": {
+    "mean": 0.9999066176605476,
+    "std": 0.0001958804050122473,
+    "n": 36
+  },
+  "paderborn": {
+    "mean": 0.45008826505123783,
+    "n": 6
+  },
+  "cwru_conditions": [
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc": 0.9994118223703559
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc": 0.999310378799074
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc": 0.999359637456283
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc": 0.999605930742328
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc": 0.999628722061335
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc": 0.9999628722061334
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc": 0.9998395121168352
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc": 0.9999259286693085
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc": 0.9999999999999999
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc": 0.9999999999999999
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc": 0.9999628712871288
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc": 0.9996305600709324
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc": 1.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc": 1.0
+    }
+  ],
+  "paderborn_bearings": [
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA01",
+      "damage_type": "Outer (KA)",
+      "auc": 0.705501190161333
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA03",
+      "damage_type": "Outer (KA)",
+      "auc": 0.2556390977443609
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA05",
+      "damage_type": "Outer (KA)",
+      "auc": 0.25756602561680586
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI01",
+      "damage_type": "Inner (KI)",
+      "auc": 0.9692604627145753
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI03",
+      "damage_type": "Inner (KI)",
+      "auc": 0.2556390977443609
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI05",
+      "damage_type": "Inner (KI)",
+      "auc": 0.2569237163259908
+    }
+  ],
+  "elapsed_seconds": 184.61352491378784,
+  "timestamp": "2026-02-20 23:53:39"
+}

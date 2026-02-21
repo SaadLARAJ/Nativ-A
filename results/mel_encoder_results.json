@@ -1,0 +1,428 @@
+{
+  "experiment": "Mel-Scale Encoder Comparison",
+  "hypothesis": "Mel-scale bands concentrate resolution around fault frequencies, improving detection",
+  "cwru": {
+    "n_conditions": 36,
+    "mean_linear": 0.9514537097088935,
+    "mean_mel": 0.6920777609389126
+  },
+  "paderborn": {
+    "n_bearings": 6,
+    "mean_linear": 0.503248406524811,
+    "mean_mel": 0.5963550431466162
+  },
+  "cwru_conditions": [
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_linear": 0.9947301892502982,
+      "auc_mel": 0.3810820915451584,
+      "delta": -0.6136480977051398
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_linear": 0.9985636053505701,
+      "auc_mel": 0.6269772870096059,
+      "delta": -0.37158631834096423
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_linear": 0.9980690838875778,
+      "auc_mel": 0.764017020667954,
+      "delta": -0.2340520632196238
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9957805907172995,
+      "delta": -0.0042194092827004814
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9944788580662537,
+      "delta": -0.00552114193374631
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_mel": 0.941911606951298,
+      "delta": -0.05808839304870195
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9508599728241436,
+      "delta": -0.049140027175856416
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_linear": 0.9980967770895054,
+      "auc_mel": 0.567025765329024,
+      "delta": -0.43107101176048135
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9871637380049494,
+      "delta": -0.012836261995050613
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_linear": 0.7633835196538045,
+      "auc_mel": 0.026081860800576975,
+      "delta": -0.7373016588532275
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_linear": 0.9572949583453031,
+      "auc_mel": 0.014911304222924426,
+      "delta": -0.9423836541223787
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_linear": 0.5882347637937252,
+      "auc_mel": 0.04052921024161557,
+      "delta": -0.5477055535521096
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9948335607584028,
+      "delta": -0.005166439241597209
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_linear": 0.8215155066714749,
+      "auc_mel": 0.0433736025964659,
+      "delta": -0.7781419040750089
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9121213487197981,
+      "delta": -0.08787865128020189
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_linear": 0.9987306014446112,
+      "auc_mel": 0.8858435242794822,
+      "delta": -0.11288707716512902
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_linear": 0.27659526716460786,
+      "auc_mel": 0.0033395575983912605,
+      "delta": -0.2732557095662166
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9856587546681987,
+      "delta": -0.014341245331801256
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_linear": 0.9720390445773919,
+      "auc_mel": 0.15193198686518825,
+      "delta": -0.8201070577122036
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_linear": 0.9993818755151038,
+      "auc_mel": 0.718251693123589,
+      "delta": -0.28113018239151477
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_linear": 0.9953237538968718,
+      "auc_mel": 0.786832156806536,
+      "delta": -0.20849159709033582
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9964077113269072,
+      "delta": -0.0035922886730928028
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_linear": 0.9957716701902748,
+      "auc_mel": 0.7780081867662274,
+      "delta": -0.2177634834240474
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9949439971211371,
+      "delta": -0.005056002878862875
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_linear": 0.9999640142143853,
+      "auc_mel": 0.9803517610543836,
+      "delta": -0.019612253160001702
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_linear": 0.905190949574918,
+      "auc_mel": 0.007840403040798886,
+      "delta": -0.897350546534119
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9954670871107607,
+      "delta": -0.004532912889239293
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_linear": 0.9980927533624219,
+      "auc_mel": 0.6071161891053034,
+      "delta": -0.39097656425711846
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_mel": 0.8789327050560791,
+      "delta": -0.12106729494392088
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_linear": 0.9999552083706598,
+      "auc_mel": 0.8975212312323073,
+      "delta": -0.10243397713835245
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9980457299198748,
+      "delta": -0.0019542700801251645
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9642616166614186,
+      "delta": -0.03573838333858137
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9980022933314222,
+      "delta": -0.0019977066685777922
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9914630556373271,
+      "delta": -0.008536944362672938
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_linear": 0.9914000071666607,
+      "auc_mel": 0.05534901637581968,
+      "delta": -0.936050990790841
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_mel": 0.9980829182642347,
+      "delta": -0.0019170817357653247
+    }
+  ],
+  "paderborn_bearings": [
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA01",
+      "damage_type": "Outer (KA)",
+      "auc_linear": 0.4922414125200642,
+      "auc_mel": 0.5217052969502408,
+      "delta": 0.029463884430176612
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA03",
+      "damage_type": "Outer (KA)",
+      "auc_linear": 0.5170979133226324,
+      "auc_mel": 0.702538683788122,
+      "delta": 0.18544077046548957
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA05",
+      "damage_type": "Outer (KA)",
+      "auc_linear": 0.46033772070626006,
+      "auc_mel": 0.5130889245585875,
+      "delta": 0.0527512038523274
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI01",
+      "damage_type": "Inner (KI)",
+      "auc_linear": 0.8522397435897435,
+      "auc_mel": 0.9954858974358975,
+      "delta": 0.14324615384615402
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI03",
+      "damage_type": "Inner (KI)",
+      "auc_linear": 0.4219569823434992,
+      "auc_mel": 0.516748635634029,
+      "delta": 0.09479165329052974
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI05",
+      "damage_type": "Inner (KI)",
+      "auc_linear": 0.2756166666666666,
+      "auc_mel": 0.3285628205128205,
+      "delta": 0.052946153846153865
+    }
+  ],
+  "elapsed_seconds": 353.5975511074066,
+  "timestamp": "2026-02-20 23:25:48"
+}

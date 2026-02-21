@@ -1,0 +1,429 @@
+{
+  "experiment": "Frugal Envelope Encoder",
+  "method": "|signal| \u2192 bandpass(log) \u2192 rectify \u2192 moving_avg \u2192 delta_spikes",
+  "edge_cost": "~120 ops/sample (vs ~1000 for FFT)",
+  "cwru": {
+    "n_conditions": 36,
+    "mean_linear": 0.9514537097088935,
+    "mean_envelope": 0.8887912208999479
+  },
+  "paderborn": {
+    "n_bearings": 6,
+    "mean_linear": 0.503248406524811,
+    "mean_envelope": 0.6241966751725178
+  },
+  "cwru_conditions": [
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_linear": 0.9947301892502982,
+      "auc_envelope": 1.0,
+      "delta": 0.0052698107497017865
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_linear": 0.9985636053505701,
+      "auc_envelope": 0.925531914893617,
+      "delta": -0.07303169045695312
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 0HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_linear": 0.9980690838875778,
+      "auc_envelope": 0.9364406779661016,
+      "delta": -0.061628405921476115
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 0HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 0,
+      "auc_linear": 0.9980967770895054,
+      "auc_envelope": 0.5170212765957447,
+      "delta": -0.4810755004937607
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 0HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 0,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_linear": 0.7633835196538045,
+      "auc_envelope": 1.0,
+      "delta": 0.23661648034619553
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_linear": 0.9572949583453031,
+      "auc_envelope": 0.9894067796610169,
+      "delta": 0.03211182131571377
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 1HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_linear": 0.5882347637937252,
+      "auc_envelope": 0.7382978723404255,
+      "delta": 0.15006310854670035
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_linear": 0.8215155066714749,
+      "auc_envelope": 0.9212765957446809,
+      "delta": 0.09976108907320602
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 1HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 1,
+      "auc_linear": 0.9987306014446112,
+      "auc_envelope": 1.0,
+      "delta": 0.0012693985553887677
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 1,
+      "auc_linear": 0.27659526716460786,
+      "auc_envelope": 0.5,
+      "delta": 0.22340473283539214
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 1HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 1,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_linear": 0.9720390445773919,
+      "auc_envelope": 0.9212765957446809,
+      "delta": -0.05076244883271097
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_linear": 0.9993818755151038,
+      "auc_envelope": 0.9533898305084746,
+      "delta": -0.045992045006629234
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 2HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_linear": 0.9953237538968718,
+      "auc_envelope": 0.5360169491525424,
+      "delta": -0.4593068047443294
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_linear": 0.9957716701902748,
+      "auc_envelope": 0.7978723404255319,
+      "delta": -0.1978993297647429
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 2HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 2,
+      "auc_linear": 0.9999640142143853,
+      "auc_envelope": 1.0,
+      "delta": 3.598578561470056e-05
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 2,
+      "auc_linear": 0.905190949574918,
+      "auc_envelope": 0.5,
+      "delta": -0.40519094957491797
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 2HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 2,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 007\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_linear": 0.9980927533624219,
+      "auc_envelope": 0.9361702127659575,
+      "delta": -0.061922540596464404
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 014\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_envelope": 0.8453389830508475,
+      "delta": -0.15466101694915246
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Ball 021\" 3HP",
+      "fault_type": "Ball",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_linear": 0.9999552083706598,
+      "auc_envelope": 0.565677966101695,
+      "delta": -0.4342772422689648
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 007\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 014\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_envelope": 0.9127659574468086,
+      "delta": -0.08723404255319145
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Inner 021\" 3HP",
+      "fault_type": "Inner",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 007\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "007",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 014\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "014",
+      "load_hp": 3,
+      "auc_linear": 0.9914000071666607,
+      "auc_envelope": 0.5,
+      "delta": -0.49140000716666066
+    },
+    {
+      "dataset": "CWRU",
+      "condition": "Outer 021\" 3HP",
+      "fault_type": "Outer",
+      "fault_size": "021",
+      "load_hp": 3,
+      "auc_linear": 1.0,
+      "auc_envelope": 1.0,
+      "delta": 0.0
+    }
+  ],
+  "paderborn_bearings": [
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA01",
+      "damage_type": "Outer (KA)",
+      "auc_linear": 0.4922414125200642,
+      "auc_envelope": 0.756351845906902,
+      "delta": 0.26411043338683776
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA03",
+      "damage_type": "Outer (KA)",
+      "auc_linear": 0.5170979133226324,
+      "auc_envelope": 0.4976,
+      "delta": -0.019497913322632454
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KA05",
+      "damage_type": "Outer (KA)",
+      "auc_linear": 0.46033772070626006,
+      "auc_envelope": 0.4976,
+      "delta": 0.03726227929373993
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI01",
+      "damage_type": "Inner (KI)",
+      "auc_linear": 0.8522397435897435,
+      "auc_envelope": 0.9984282051282052,
+      "delta": 0.14618846153846166
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI03",
+      "damage_type": "Inner (KI)",
+      "auc_linear": 0.4219569823434992,
+      "auc_envelope": 0.4976,
+      "delta": 0.07564301765650078
+    },
+    {
+      "dataset": "Paderborn",
+      "bearing": "KI05",
+      "damage_type": "Inner (KI)",
+      "auc_linear": 0.2756166666666666,
+      "auc_envelope": 0.4976,
+      "delta": 0.22198333333333337
+    }
+  ],
+  "elapsed_seconds": 378.1957130432129,
+  "timestamp": "2026-02-20 23:48:18"
+}
