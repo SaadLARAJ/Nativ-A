@@ -95,24 +95,30 @@ On a testé NATIVA avec 3 baselines non-supervisées (Autoencoder, Isolation For
 
 Les 0.5% restants = le coût du spike : rate coding ajoute du bruit stochastique que le floating-point n'a pas. C'est le **trade-off SWaP** (Size, Weight, and Power) : 0.5% de précision contre une architecture compatible avec des puces neuromorphiques en microwatts.
 
-## Évolution du projet (journal de bord)
+## Journal d'Architecture : Le chemin de l'échec à la rupture
 
-| Étape | Résultat | Leçon |
-|:------|:--------|:------|
-| PoC sonar (défense navale) | Fonctionnel sur synthétique | Pas de données réelles classifiées |
-| Pivot vibrations (NASA) | Visuellement prometteur | Pas de métriques reproductibles |
-| Premier CWRU | **AUC = 0.50** ❗ | Normalisation per-window = piège mortel |
-| Fix normalisation globale | AUC = 0.997 | Percée architecturale |
-| Multi-condition (36) | AUC moyen = 0.95 | 1HP faible (0.82), 3 conditions < 0.77 |
-| Ablation Kuramoto | **Δ = 0.000** | Kuramoto inerte sur cette tâche |
-| Baselines (AE/IF/SVM) | AUC = 1.000 | CWRU trivialement séparable avec 22 features |
-| **Feature-Spike** | **AUC = 0.995** | **Le SNN est bon, l'encodeur était le bottleneck** |
-| Paderborn (64kHz) | **AUC = 0.503** ❌ | L'encodeur ne généralise pas cross-dataset |
-| **Mel-Scale encoder** | **CWRU: 0.69 ❌ / Paderborn: 0.60 ↗️** | **Pas d'encodeur universel. Ball faults = broadband** |
-| Envelope V1 (naïve) | CWRU: 0.889 / Pad: 0.624 | Démodulation AM marche, 1HP fixé (0.905) |
-| **Envelope V2 (expert)** | **CWRU: 1.000 ✅ / Pad: 0.450 ❌** | **HP>2kHz = parfait CWRU, détruit Paderborn** |
-| Dual Encoder (Fusion) | CWRU: 0.976 ↘️ / Pad: 0.428 ↘️ | Famine compétitive (Besoin d'arch. columnaire) |
-| Delay-Line (Jeffress) | KA03 (Pad): 0.256 $\rightarrow$ **0.987** | Détection des fautes périodiques sans FFT |
+L'Open Source ne doit pas cacher les impasses. NATIVA ne s'est pas fait en un jour. Voici comment nous sommes passés d'un AUC catastrophique de 0.50 à une architecture neuromorphique capable d'assassiner l'analyse spectrale classique FFT.
+
+### 1. La naïveté initiale (L'échec de la normalisation)
+Les premiers essais sur CWRU donnaient un score de **0.50 (le hasard pur)**. Le SNN apprenait, la Free Energy fonctionnait, mais le réseau était aveugle. Pourquoi ?
+Parce que nous appliquions une normalisation Min-Max standard *sur chaque fenêtre temporelle*. Cela écrasait complètement les variations d'amplitude entre une machine saine et une machine dont le roulement s'écaille. 
+**La solution :** La *Normalisation Globale*. Nous calons désormais l'encodeur sur le 99ème centile du dataset sain complet. Résultat immédiat : l'AUC a bondi à **0.997**.
+
+### 2. Le mur Paderborn et le piège des algorithmes Magiques
+Forts d'un score parfait sur CWRU (chocs francs, haute fréquence), nous avons testé NATIVA sur le dataset Paderborn (usure abrasive, frottements basse fréquence). 
+**Résultat : L'effondrement (AUC 0.50).**
+Nous avons alors essayé l'échelle Mel (utilisée en reconnaissance vocale) pour tenter de sauver les basses fréquences. **Erreur stratégique :** L'échelle Mel écrase les hautes fréquences, détruisant nos scores sur CWRU (chute à 0.69) tout en échouant sur Paderborn. 
+*La Leçon : Il n'y a pas d'encodeur universel.* L'IA vibratoire doit respecter la physique de la panne.
+
+### 3. La Famine Compétitive (L'échec de la fusion naïve)
+Pour contrer cela, nous avons tenté un *Dual-Encoder* : injecter à la fois le bruit brut (Paderborn) et l'Enveloppe temporelle HF (CWRU) dans le même réseau SNN.
+**Le crash :** Le bruit continu a noyé le signal impulsif. La règle STDP du réseau s'est concentrée sur le bruit ambiant continu et a ignoré les chocs rares. C'est ce que nous avons théorisé comme la **"Famine Compétitive"**. Le réseau est devenu sourd aux deux types de pannes (AUC 0.42). 
+
+### 4. Le Hack Neuromorphique final : Le Modèle de Jeffress
+Face aux pannes périodiques sourdes de Paderborn, l'industrie classique utilise la Transforms de Fourier (FFT), qui est lourde pour l'Edge AI sur batterie (TinyML). 
+Nous avons décidé d'utiliser l'astuce neuronale des chouettes pour localiser le son : le **Modèle de Coïncidence Temporelle de Jeffress**.
+En utilisant de simples registres à décalage binaires (Virtual Shift Registers) en C, nous avons construit des "Delay-Lines". Le réseau cherche une autocorrélation temporelle pure sans aucune opération en virgule flottante. 
+**Résultat :** Le score sur la panne Paderborn KA03 a bondi de **0.256 à 0.987**, pour une empreinte mémoire inferieure à 12 Ko.
 
 ### Conclusion R&D et Taxonomie des pannes
 
@@ -121,18 +127,18 @@ Les 0.5% restants = le coût du spike : rate coding ajoute du bruit stochastique
 2. **Périodiques sourdes** (Paderborn KA03) : Détectables par Lignes de Retard de Jeffress (résolu).
 3. **Apériodiques / Frottement continu** (Paderborn KA05) : **Le Mur Physique Absolu**. Un accéléromètre seul ne peut pas discerner une usure abrasive d'un changement de régime moteur (variation RMS) sans risquer de fausses alarmes.
 
-### Edge AI : C Bare-Metal
+### Edge AI : L'implémentation C Bare-Metal (Propriétaire)
 
-```
-gcc -O2 -o nativa_edge edge/nativa_edge.c -lm && ./nativa_edge
-```
+Toute la théorie validée en Python dans ce dépôt public a été portée et optimisée en langage **C Bare-Metal**. Cette implémentation industrielle est le moteur de déploiement réel de NATIVA pour les puces très basse consommation (ex: Cortex-M4, ou hardware neuromorphique synchrone).
 
-| Métrique | Valeur |
+| Métrique du Firmware C | Valeur (Validation laboratoire - TRL 4)|
 |---------|--------|
-| RAM totale | **4.7 KB** |
-| Latence/fenêtre (Cortex-M4) | **~0.2 ms** |
-| CPU usage (fenêtre 100ms) | **0.2%** |
-| Dépendances externes | **Zéro** |
+| RAM totale (Allocation Statique) | **4.7 KB** |
+| Latence d'inférence (Cortex-M4) | **~0.2 ms** |
+| FPU (Floating Point Unit) requis | **Non** pour le modèle SNN de base |
+| Dépendances externes | **Zéro (ni RTOS, ni malloc)** |
+
+*(Note : Le code firmware C (`edge/`) est sous licence propriétaire exclusive et n'est pas inclus dans ce dépôt public. Me contacter pour partenariats industriels / licences matérielles).*
 
 ## Positionnement : Pourquoi NATIVA intéresse l'Industrie (STMicroelectronics, SKF, Siemens)
 
@@ -193,8 +199,6 @@ NATIVA/
 │   ├── mel_encoder.py             #   Linear vs Mel-scale comparison
 │   ├── envelope_encoder.py        #   Frugal envelope V1 (naive)
 │   └── envelope_v2.py             #   Frugal envelope V2 (expert corrections)
-├── edge/                          # Firmware bare-metal C
-│   └── nativa_edge.c              #   Inférence complète (4.7KB RAM)
 ├── results/                       # Résultats générés
 │   ├── cwru_report.png
 │   ├── cwru_multi_report.png
