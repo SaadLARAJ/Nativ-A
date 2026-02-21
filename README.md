@@ -174,40 +174,7 @@ python experiments/benchmark_cwru_multi.py
 
 Le dataset CWRU est téléchargé automatiquement (~30 MB).
 
-## Structure du projet
 
-```
-NATIVA/
-├── README.md
-├── requirements.txt
-├── nativa/                        # Core — réseau neuromorphique
-│   ├── nativa_network.py          #   Réseau SNN (LIF + STDP + Kuramoto + FE)
-│   ├── neuron.py                  #   Neurones LIF, seuils adaptatifs
-│   ├── stdp.py                    #   Apprentissage STDP
-│   ├── free_energy.py             #   Inférence Active (ELBO)
-│   ├── kuramoto.py                #   Oscillateurs de Kuramoto
-│   ├── event_encoder.py           #   Encodeurs spike (rate, temporal, delta)
-│   ├── integrators.py             #   Intégrateurs numériques (RK4, Euler)
-│   └── delay_buffer.py            #   Buffers temporels
-├── experiments/                   # Benchmarks reproductibles
-│   ├── benchmark_cwru.py          #   Single-condition (0HP)
-│   ├── benchmark_cwru_multi.py    #   Multi-condition (36 conditions)
-│   ├── ablation_kuramoto.py       #   Ablation Kuramoto ON/OFF
-│   ├── baseline_autoencoder.py    #   AE + IF + OC-SVM baselines
-│   ├── feature_spike.py           #   22 features → rate-coded spikes
-│   ├── benchmark_paderborn.py     #   Paderborn cross-dataset validation
-│   ├── mel_encoder.py             #   Linear vs Mel-scale comparison
-│   ├── envelope_encoder.py        #   Frugal envelope V1 (naive)
-│   └── envelope_v2.py             #   Frugal envelope V2 (expert corrections)
-├── results/                       # Résultats générés
-│   ├── cwru_report.png
-│   ├── cwru_multi_report.png
-│   └── *.json
-├── paper/                         # Publication scientifique
-│   ├── NATIVA_paper.tex           #   Version LaTeX (IEEE format)
-│   └── NATIVA_paper.md            #   Version Markdown
-└── data/cwru/                     # Dataset (auto-téléchargé)
-```
 
 ## Références
 
